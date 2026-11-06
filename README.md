@@ -124,3 +124,4 @@ MIT
 
 "# Mini-map" 
 "# Mini-map" 
+"# minimap-scum" 
