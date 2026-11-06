@@ -3251,19 +3251,6 @@ fn main() {
                 let _ = w.set_focus();
             });
         }))
-        .plugin(tauri_plugin_updater::Builder::new()
-            .default_version_comparator({
-                let current_version = release_version().trim_start_matches('v').to_string();
-                move |_current: semver::Version, release: tauri_plugin_updater::RemoteRelease| {
-                    let release_version = release.version.to_string();
-                    let release_version = release_version.trim_start_matches('v');
-                    match (semver::Version::parse(&current_version), semver::Version::parse(release_version)) {
-                        (Ok(c), Ok(r)) => r > c,
-                        _ => release_version != current_version,
-                    }
-                }
-            })
-            .build())
         .setup(move |app| {
             let data_path = app.path().app_data_dir()
                 .unwrap_or_else(|_| PathBuf::from("."))
