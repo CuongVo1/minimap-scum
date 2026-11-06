@@ -122,3 +122,4 @@ Click any image to see it full-size.
 
 MIT
 
+"# Mini-map" 
